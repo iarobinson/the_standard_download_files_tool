@@ -4,7 +4,10 @@ require 'open-uri'
 # If these urls don't work you can get them on your own
 # To get them on your own, check out the JavaScript file in this repo
 
-# This is the list of URLS that worked on Oct. 7th, 2021
+# If those URLS don't work, use the instructions on getURLS.js
+# Once you have your URLs copied, delete the file_urls above
+# Paste your urls as an array below:
+# file_urls = <PASTE_YOUR_URLS_HERE>
 file_urls = [
   "//m2.audiokniga.club/audio/KbHUDnnSEirCml63KQF4qw/1633717344/uploads/media_eng/651/Y_Q12C_fLSaubhAl.mp3",
   "//m2.audiokniga.club/audio/U5Ny4HvZhzAWc4-Pf-IX4w/1633717344/uploads/media_eng/651/IYxe4Wt1tvBVOr7T.mp3",
@@ -135,21 +138,17 @@ file_urls = [
   "//m2.audiokniga.club/audio/g3aO8fryhCuRm8Jjkh7H5A/1633717344/uploads/media_eng/651/JYzv604k8Z7vq9ef.mp3"
 ]
 
-# If those URLS don't work, use the instructions on getURLS.js
-# Once you have your URLs copied, delete the file_urls above
-# Paste your urls as an array below:
-# file_urls = <PASTE_YOUR_URLS_HERE>
-
-# If you had to copy the urls fill in the following
 def save_files_by_url urls
   urls.each_with_index do |file, index|
     exact_mp3_url = 'https:' + file
     chapter_number = index +  1
     file_name = "ch_#{chapter_number}_dune_frank_herbert.mp3"
     File.write file_name, open(exact_mp3_url).read
+    p file_name + " downloaded successfully."
   end
 end
 
 save_files_by_url file_urls
 
-# To run this file, run the following script: `ruby download_script.rb`
+# To run this file, use terminal to enter this directory and run: `ruby download_script.rb`
+# Be patient, you should see the files popping up in this folder.
